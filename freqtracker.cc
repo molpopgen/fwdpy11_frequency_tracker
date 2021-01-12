@@ -27,9 +27,9 @@ struct FreqTracker
                              std::unordered_map<double, std::pair<double, trajectory>>>;
 
     map_type trajectories;
-    std::uint32_t burin_time;
+    std::uint32_t burnin_time;
 
-    FreqTracker(std::uint32_t burnin) : trajectories{}, burin_time{burnin}
+    FreqTracker(std::uint32_t burnin) : trajectories{}, burnin_time{burnin}
     {
     }
 
@@ -37,7 +37,7 @@ struct FreqTracker
     operator()(const fwdpy11::DiploidPopulation &pop,
                fwdpy11::SampleRecorder & /*unused*/)
     {
-        if (pop.generation >= burin_time)
+        if (pop.generation >= burnin_time)
             {
                 for (std::size_t i = 0; i < pop.mcounts.size(); ++i)
                     {
