@@ -37,7 +37,7 @@ struct FreqTracker
     operator()(const fwdpy11::DiploidPopulation &pop,
                fwdpy11::SampleRecorder & /*unused*/)
     {
-        if (pop.generation >= burnin_time)
+        if (pop.generation > burnin_time)
             {
                 for (std::size_t i = 0; i < pop.mcounts.size(); ++i)
                     {
